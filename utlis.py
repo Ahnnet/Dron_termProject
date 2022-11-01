@@ -40,6 +40,7 @@ def findFace(img):
         myFaceListArea.append(area)
         myFaceListC.append([cx, cy])
 
+
     if len(myFaceListArea) != 0:
         i = myFaceListArea.index(max(myFaceListArea))
         return img, [myFaceListC[i], myFaceListArea[i]]

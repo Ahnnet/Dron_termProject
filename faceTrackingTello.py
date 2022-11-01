@@ -8,6 +8,8 @@ pError = 0
 startCounter = 0  # for no Flight 1   - for flight 0
 detectCounter = 0
 
+flag = False
+
 myDrone = initializeTello()
 
 while True:
@@ -15,7 +17,7 @@ while True:
     ## Flight
     if startCounter == 0:
         myDrone.takeoff()
-        myDrone.move_up(40)
+        myDrone.move_up(20)
         startCounter = 1
 
     ## Step 1
