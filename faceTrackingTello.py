@@ -17,7 +17,7 @@ while True:
     ## Flight
     if startCounter == 0:
         myDrone.takeoff()
-        myDrone.move_up(20)
+        myDrone.move_up(15)
         startCounter = 1
 
     ## Step 1
