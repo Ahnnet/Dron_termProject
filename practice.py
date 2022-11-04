@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 from djitellopy import tello
 import time
 
@@ -10,32 +9,64 @@ print(me.get_battery())
 me.streamoff()
 me.streamon()
 me.takeoff()
+me.move_up(20)
+time.sleep(3.0)
+# me.flip('l')
+me.flip('r')
+#me.flip('b')
+me.land()
 
-me.move_back(20)
-me.move_forward(20)
+# image = cv2.imread(r'E:\Dron_termProject\Dron_termProject\picture\profile1.jpg')
 
-me.move_back(20)
-me.move_forward(20)
+# gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-me.move_back(20)
-me.move_forward(20)
+# bgr = cv2.cvtColor(gray, cv2.COLOR_GRAY2BGR)
+
+# rgb = cv2.cvtColor(gray, cv2.COLOR_GRAY2RGB)
+
+# cv2.imshow('original', image)
+# cv2.imshow('gray', gray)
+# cv2.imshow('bgr', bgr)
+# cv2.imshow('rgb', rgb)
+# cv2.waitKey(0)
+
+# import numpy as np
+# from djitellopy import tello
+# import time
+
+# me = tello.Tello()
+# me.connect()
+# print(me.get_battery())
+
+# me.streamoff()
+# me.streamon()
+# me.takeoff()
+
+# me.move_back(20)
+# me.move_forward(20)
+
+# me.move_back(20)
+# me.move_forward(20)
+
+# me.move_back(20)
+# me.move_forward(20)
     
-me.move_back(20)
-me.move_forward(20)
+# me.move_back(20)
+# me.move_forward(20)
 
-me.move_back(20)
-me.move_forward(20)
+# me.move_back(20)
+# me.move_forward(20)
 
-w, h = 360, 240
-fbRange = [6200, 6800]
-pid = [0.4, 0.4, 0]
-pError = 0
-flag = True
+# w, h = 360, 240
+# fbRange = [6200, 6800]
+# pid = [0.4, 0.4, 0]
+# pError = 0
+# flag = True
 
-def move():
-    me.streamoff()
-    me.streamon()
-    me.takeoff()
+# def move():
+#     me.streamoff()
+#     me.streamon()
+#     me.takeoff()
 
     # me.move_back(20)
     # me.move_forward(20)

@@ -1,6 +1,4 @@
-from djitellopy import Tello
 import cv2
-import numpy as np
 
 def judgment(img):
     sideCascade = cv2.CascadeClassifier(r'E:\Dron_termProject\Dron_termProject\opencv-4.x\data\haarcascades\haarcascade_profileface.xml')
