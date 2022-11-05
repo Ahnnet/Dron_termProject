@@ -1,8 +1,7 @@
-#### final code ####
-
 import cv2
 from djitellopy import tello
 import time
+from datetime import datetime
 import random
 
 me = tello.Tello()
@@ -14,20 +13,16 @@ me.streamon()
 me.takeoff()
 me.move_up(20)
 
+#????????
 w, h = 360, 240
-fbRange = [6200, 6800]
-pid = [0.4, 0.4, 0]
-pError = 0
+# fbRange = [6200, 6800]
+# pid = [0.4, 0.4, 0]
+# pError = 0
 findcount = 0
 
 # Drons direction predict. -> True: left / False: right
 dronDir = True
 num = random.randint(0,1)
-print("00000000000000000000000000000000000000000000000000000000000000000")
-print("random: "+str(num))
-print("00000000000000000000000000000000000000000000000000000000000000000")
-if(num==1): dronDir = True
-else: dronDir = False
 
 flagbit = 0
 
@@ -56,7 +51,7 @@ def findFace(img):
     else:
         return img, [[0, 0], 0], detect
 
-# detect size face
+# detect side face
 def findSideFace(img):
     faceCascade = cv2.CascadeClassifier("E:\Dron_termProject\Dron_termProject\opencv-4.x\data\haarcascades\haarcascade_profileface.xml")
     imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -80,15 +75,11 @@ def findSideFace(img):
         print("right face detected")
         return False
 
-# "charm charm charm" motion
+# "charm charm charm" motion -> move left and right
 def detected():
-    #왼쪽 오른쪽으로 왔다 갔다
     me.move_left(20)
-    me.move_right(20)
-    # me.move_left(40)
-    # me.move_right(40)
-    # me.move_left(40)
-    # me.move_right(20)
+    me.move_right(40)
+    me.move_left(20)
 
 # plyaer win. -> take commemorative photo
 def playerWin():
@@ -97,15 +88,15 @@ def playerWin():
     me.move_back(60)
     return 0
 
-# dron win. -> annoying movement
+# dron win. -> annoying player
 def dronWin():
     print("drone Win")
-    # me.flip("b")
+    me.flip("b")
     me.move_up(40)
-    # me.move_down(40)
-    # me.move_up(40)
-    # me.move_down(40)
-    # me.move_up(20)
+    me.move_down(40)
+    me.move_up(40)
+    me.move_down(40)
+    me.move_up(20)
     me.rotate_clockwise(720)
     return 0
 
@@ -114,8 +105,9 @@ while True:
     img = me.get_frame_read().frame
     img = cv2.resize(img, (w, h))
     img, info, detect = findFace(img)
-    if(detect == True): findcount += 1 # if the frontal face detected, findcount++
-    print(findcount)
+
+    # if the frontal face detected, findcount++
+    if(detect == True): findcount += 1
     
     # after detected
     if(flagbit==1):
@@ -123,13 +115,20 @@ while True:
         if(num==1): 
             time.sleep(2.0)
             me.flip('l')
-            me.move_right(20)
+            me.move_right(40)
         # right
         elif(num==0): 
             time.sleep(2.0)
             me.flip('r')
-            me.move_left(20)
-        print("dron direction (t):left/(f):right > "+str(dronDir))
+            me.move_left(40)
+
+        print("\n00000000000000000000000000000000000000000000000000000000000000000")
+        if(num==1):
+            dronDir = True
+            print("predict: left")
+        else:
+            dronDir = False
+            print("predict: right")
 
         # judge the winner
         if(findSideFace(img) == dronDir): 
@@ -138,10 +137,14 @@ while True:
             playerWin()
             time.sleep(3.0)
             imgSave = me.get_frame_read().frame
-            p = "E:\Dron_termProject\Dron_termProject\imgs\snapshot.png"
+        
+            now = datetime.now()
+            date = str(now.year)+"."+str(now.month)+"."+str(now.day)+"_"+str(now.hour)+"."+str(now.minute)
+            path = "E:\Dron_termProject\Dron_termProject\imgs\\"+str(date)+".png"
             # save the file
-            cv2.imwrite(p, imgSave)
+            cv2.imwrite(path, imgSave)
             print("[INFO] saved")
+        print("00000000000000000000000000000000000000000000000000000000000000000")
         
         # finish
         print("judgment finish")
@@ -150,11 +153,9 @@ while True:
         break
 
     # face detect stable
-    if(findcount==20):
+    if(findcount==50):
         detected()
-        print("move")
         time.sleep(1.0)
-        print("sleep finish")
         flagbit = 1
         findcount+=1
         
