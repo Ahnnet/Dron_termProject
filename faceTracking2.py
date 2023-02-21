@@ -13,11 +13,7 @@ me.streamon()
 me.takeoff()
 me.move_up(20)
 
-#????????
 w, h = 360, 240
-# fbRange = [6200, 6800]
-# pid = [0.4, 0.4, 0]
-# pError = 0
 findcount = 0
 
 # Drons direction predict. -> True: left / False: right
