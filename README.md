@@ -6,7 +6,7 @@ This is a chamchamcham game with a drone that proceeds through user's face recog
 Basically, the drone plays as an attacker and the user as a defender.
 When the drone wins, a celebration move is performed, and when the user wins, the drone takes a congratulatory photo for user.
 
-## Tech stack
+## Tech Stack
 ### Drone
 - Model: DJ Tello Edu
 - Control: from djitellopy import tello (https://github.com/damiafuentes/DJITelloPy/blob/master/djitellopy/tello.py)
