@@ -1,10 +1,26 @@
-# Dron_termProject 
-## Gachon University Dron&amp;Robotics term project
+# Drone_termProject 
+## Gachon University Drone&amp;Robotics term project
 
-### opencv/harrcasecade
-https://github.com/opencv/opencv/tree/4.x/data/haarcascades
+## Content
+This is a chamchamcham game with a drone that proceeds through user's face recognition using haarcascade provided by openCV.
+Basically, the drone plays as an attacker and the user as a defender.
+When the drone wins, a celebration move is performed, and when the user wins, the drone takes a congratulatory photo for user.
 
-![image](https://user-images.githubusercontent.com/93837441/201152583-a6a76a6d-ddcb-4adb-8bb4-13ba2bb34605.png)
+## Tech stack
+### Drone
+- Model: DJ Tello Edu
+- Control: from djitellopy import tello (https://github.com/damiafuentes/DJITelloPy/blob/master/djitellopy/tello.py)
+
+### Face detection
+- opencv/haarcascade (https://github.com/opencv/opencv/tree/4.x/data/haarcascades)
+
+## Unsolved Issues
+1. Celebration photo angle.
+   - When the drone takes a picture to celebrate users victory, We tried to get the drone to move by finding the best angle from the user's face.
+   - We'll try to find the better angle and distance for the photo shoot.
+
+
+<!-- ![image](https://user-images.githubusercontent.com/93837441/201152583-a6a76a6d-ddcb-4adb-8bb4-13ba2bb34605.png) -->
 ![image](https://user-images.githubusercontent.com/93837441/200865195-56153b75-f4f2-4d36-86de-8a0d1c167aa3.png)
 ![image](https://user-images.githubusercontent.com/93837441/200865238-8c95d43e-cbf4-4d8b-9813-5d338b7b438d.png)
 ![image](https://user-images.githubusercontent.com/93837441/200865275-12200799-3ef1-4d2c-8da9-45759488f6d2.png)
